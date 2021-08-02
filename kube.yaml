@@ -18,7 +18,7 @@ spec:
           image: #{deployment.image.name}#
           ports:
             - name: http-api
-              containerPort: 5000
+              containerPort: 8080
               protocol: TCP
           imagePullPolicy: Always
       terminationGracePeriodSeconds: 30
@@ -34,8 +34,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 5000
-      targetPort: 5000
+    - port: 8080
+      targetPort: 8080
       protocol: TCP
   selector:
     app: graph-ms 
@@ -44,6 +44,7 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
+    nginx.ingress.kubernetes.io/service-upstream: "true"
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /
   name: graph-ms 
@@ -55,4 +56,4 @@ spec:
       paths:
       - backend:
           serviceName: graph-ms 
-          servicePort: 5000
+          servicePort: 8080
