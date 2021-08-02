@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM python:3.8.1-slim
 
 RUN apt-get update -y && \
     apt-get install -y python3-pip python-dev
