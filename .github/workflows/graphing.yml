@@ -41,7 +41,7 @@ jobs:
       - name: Replace tokens
         uses: cschleiden/replace-tokens@v1.0
         with:
-          files: ./React_Client/kube.yaml
+          files: ./kube.yaml
         env:
           deployment.image.name: ${{ secrets.DOCKERHUB_USERNAME }}/graph_ms:${{ github.run_id }}
 
