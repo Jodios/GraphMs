@@ -18,7 +18,7 @@ spec:
           image: #{deployment.image.name}#
           ports:
             - name: http-api
-              containerPort: 8080
+              containerPort: 8000
               protocol: TCP
           imagePullPolicy: Always
       terminationGracePeriodSeconds: 30
@@ -34,8 +34,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 8000
+      targetPort: 8000
       protocol: TCP
   selector:
     app: graph-ms 
@@ -56,4 +56,4 @@ spec:
       paths:
       - backend:
           serviceName: graph-ms 
-          servicePort: 8080
+          servicePort: 8000
