@@ -44,12 +44,17 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/service-upstream: "true"
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /
   name: graph-ms 
   namespace: prod
 spec:
+  tls:
+    - hosts:
+        - graphing.jodios.com
+      secretName: graphing-ms-tls
   rules:
   - host: graphing.jodios.com
     http:
