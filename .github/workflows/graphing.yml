@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true 
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/graph_ms:${{ github.run_id }}:${{ secrets.DOCKERHUB_USERNAME }}/graph_ms:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/graph_ms:${{ github.run_id }},${{ secrets.DOCKERHUB_USERNAME }}/graph_ms:latest
 
 
       # replaceing tokens in kube yaml
